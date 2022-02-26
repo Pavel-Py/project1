@@ -7,72 +7,18 @@
     <p class="mb-4">Найдено {{ prices|length }} туров, стоимостью от {{ prices|min_val }} до {{ prices|max_val }} и прибыванием от {{ nights|min_val }} ночей до {{ nights|max_val }} ночей</p>
     <!-- CARDS -->
     <div class="row mt-5">
+      {% for tour_id, tour_args in tours.items %}
       <div class="col-4">
         <div class="card mb-4">
-          <img src="{{ tours.1.picture }}" class="card-img-top img-fluid" alt="">
+          <img src="{{ tour_args.picture }}" class="card-img-top img-fluid" alt="">
           <div class="card-body">
-            <h2 class="h5 card-title">{{ tours.1.title }}</h2>
-            <p class="card-text">{{ tours.1.description }}</p>
-            <a href="/tours/{{ tours.0 }}" class="btn btn-sm btn-primary">Подробнее</a>
+            <h2 class="h5 card-title">{{ tour_args.title }}</h2>
+            <p class="card-text">{{ tour_args.description }}</p>
+            <a href="{% url 'tours' tour_id %}" class="btn btn-sm btn-primary">Подробнее</a>
           </div>
         </div>
       </div>
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="{{ tours.3.picture }}" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">{{ tours.3.title }}</h2>
-            <p class="card-text">{{ tours.3.description }}</p>
-            <a href="/tours/{{ tours.2 }}" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="{{ tours.5.picture }}" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">{{ tours.5.title }}</h2>
-            <p class="card-text">{{ tours.5.description }}</p>
-            <a href="/tours/{{ tours.4 }}" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      {% if prices|length >= 4 %}
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="{{ tours.7.picture }}" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">{{ tours.7.title }}</h2>
-            <p class="card-text">{{ tours.7.description }}</p>
-            <a href="/tours/{{ tours.6 }}" class="btn btn-sm btn-primary">Подробнее</a>
-            </div>
-          </div>
-        </div>
-      {% endif %}
-      {% if prices|length >= 5 %}
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="{{ tours.9.picture }}" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">{{ tours.9.title }}</h2>
-            <p class="card-text">{{ tours.9.description }}</p>
-            <a href="/tours/{{ tours.8 }}" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      {% endif %}
-      {% if prices|length >= 6 %}
-      <div class="col-4">
-        <div class="card mb-4">
-          <img src="{{ tours.11.picture }}" class="card-img-top img-fluid" alt="">
-          <div class="card-body">
-            <h2 class="h5 card-title">{{ tours.11.title }}</h2>
-            <p class="card-text">{{ tours.11.description }}</p>
-            <a href="/tours/{{ tours.10 }}" class="btn btn-sm btn-primary">Подробнее</a>
-          </div>
-        </div>
-      </div>
-      {% endif %}
+      {% endfor %}
     </div>
   </main>
 
